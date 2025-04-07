@@ -79,3 +79,17 @@ ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
 ScrollReveal().reveal('.home-img img, .services-container, .portfolio-box, .testimonial-wrapper, .contact form', { origin: 'bottom' });
 ScrollReveal().reveal('.home-content h1, .about-img img', { origin: 'left' });
 ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
+
+document.querySelector("#contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+  
+    emailjs.sendForm("service_7m2vrtw", "template_swzed3c", this)
+      .then(() => {
+        alert("Message sent successfully!");
+        this.reset();
+      }, (err) => {
+        console.error("Send failed:", err);
+        alert("Failed to send message. Please try again.");
+      });
+  });
+
